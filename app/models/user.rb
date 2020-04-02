@@ -9,5 +9,6 @@ class User < ActiveRecord::Base
 
   begin :relationships
     has_one :provider
+    has_one :agreement
   end
 end
