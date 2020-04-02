@@ -10,10 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_30_131050) do
+ActiveRecord::Schema.define(version: 2020_04_02_214744) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "providers", force: :cascade do |t|
+    t.string "ruc"
+    t.string "economic_activity"
+    t.string "contributor_type"
+    t.string "legal_representative"
+    t.string "business_name"
+    t.string "image"
+    t.string "logo"
+    t.string "slogan"
+    t.string "mobile"
+    t.boolean "active", default: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_providers_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "provider", default: "email", null: false
@@ -40,4 +57,5 @@ ActiveRecord::Schema.define(version: 2020_03_30_131050) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "providers", "users"
 end
