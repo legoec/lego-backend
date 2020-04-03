@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: providers
+# Table name: vendors
 #
 #  id                   :bigint           not null, primary key
 #  ruc                  :string
@@ -18,8 +18,11 @@
 #  updated_at           :datetime         not null
 #  category_id          :bigint
 #
-require 'rails_helper'
-
-RSpec.describe Provider, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+class Vendor < ApplicationRecord
+  begin :relationships
+    belongs_to :user
+    belongs_to :category
+    has_many :experiences
+    has_many :recomendations
+  end
 end

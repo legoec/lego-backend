@@ -7,7 +7,7 @@
 #  description :text
 #  start_date  :datetime
 #  end_date    :datetime
-#  provider_id :bigint           not null
+#  vendor_id   :bigint           not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #

@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
   include DeviseTokenAuth::Concerns::User
 
   begin :relationships
-    has_one :provider
+    has_one :vendor
     has_many :agreements
   end
 end

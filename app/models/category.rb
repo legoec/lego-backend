@@ -11,6 +11,6 @@
 #
 class Category < ApplicationRecord
   begin :relationships
-    has_many :providers
+    has_many :vendors
   end
 end
