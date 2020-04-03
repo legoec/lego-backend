@@ -11,3 +11,7 @@
 ### Swagger
 
 - To update the api-docs, run `rake rswag:specs:swaggerize`
+
+### Hide warnings of Ruby version and Rails versions
+
+https://stackoverflow.com/a/59594760
