@@ -1,3 +1,6 @@
 class Provider < ApplicationRecord
-  belongs_to :user
+  begin :relationships
+    belongs_to :user
+    belongs_to :category
+  end
 end
