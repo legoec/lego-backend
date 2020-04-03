@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_03_172105) do
+ActiveRecord::Schema.define(version: 2020_04_03_184108) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,16 @@ ActiveRecord::Schema.define(version: 2020_04_03_172105) do
     t.index ["user_id"], name: "index_providers_on_user_id"
   end
 
+  create_table "recomendations", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "contact"
+    t.bigint "provider_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["provider_id"], name: "index_recomendations_on_provider_id"
+  end
+
   create_table "services", force: :cascade do |t|
     t.string "name"
     t.float "price"
@@ -106,5 +116,6 @@ ActiveRecord::Schema.define(version: 2020_04_03_172105) do
   add_foreign_key "experiences", "providers"
   add_foreign_key "providers", "categories"
   add_foreign_key "providers", "users"
+  add_foreign_key "recomendations", "providers"
   add_foreign_key "services", "providers"
 end
