@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_03_144413) do
+ActiveRecord::Schema.define(version: 2020_04_03_164741) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 2020_04_03_144413) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "service_id", null: false
+    t.index ["service_id"], name: "index_agreements_on_service_id"
     t.index ["user_id"], name: "index_agreements_on_user_id"
   end
 
@@ -53,6 +55,16 @@ ActiveRecord::Schema.define(version: 2020_04_03_144413) do
     t.index ["user_id"], name: "index_providers_on_user_id"
   end
 
+  create_table "services", force: :cascade do |t|
+    t.string "name"
+    t.float "price"
+    t.integer "amount"
+    t.bigint "provider_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["provider_id"], name: "index_services_on_provider_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "provider", default: "email", null: false
     t.string "uid", default: "", null: false
@@ -78,7 +90,9 @@ ActiveRecord::Schema.define(version: 2020_04_03_144413) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "agreements", "services"
   add_foreign_key "agreements", "users"
   add_foreign_key "providers", "categories"
   add_foreign_key "providers", "users"
+  add_foreign_key "services", "providers"
 end
