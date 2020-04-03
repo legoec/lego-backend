@@ -22,5 +22,6 @@ class Provider < ApplicationRecord
   begin :relationships
     belongs_to :user
     belongs_to :category
+    has_many :experiences
   end
 end
