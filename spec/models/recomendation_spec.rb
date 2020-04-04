@@ -6,7 +6,7 @@
 #  name        :string
 #  description :text
 #  contact     :string
-#  provider_id :bigint           not null
+#  vendor_id   :bigint           not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
