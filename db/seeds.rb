@@ -15,7 +15,8 @@ user = User.create(
 User.create(
     name: 'admin',
     email: 'admin@example.com',
-    password: '12356789'
+    password: '12356789',
+    admin: true
 )
 
 vendor_user = User.create(
