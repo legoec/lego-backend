@@ -9,20 +9,20 @@
 user = User.create(
     name: 'user',
     email: 'user@example.com',
-    password: '12356789'
+    password: '123456789'
 )
 
 User.create(
     name: 'admin',
     email: 'admin@example.com',
-    password: '12356789',
+    password: '123456789',
     admin: true
 )
 
 vendor_user = User.create(
     name: 'vendor',
     email: 'vendor@example.com',
-    password: '12356789'
+    password: '123456789'
 )
 
 category = Category.create(
