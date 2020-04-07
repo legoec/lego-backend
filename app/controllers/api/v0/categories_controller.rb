@@ -2,7 +2,7 @@ module Api
     module V0
         class CategoriesController < ApplicationController
             def index
-                @categories = Category.all
+                @categories = policy_scope(Category)
             end
         end
     end
