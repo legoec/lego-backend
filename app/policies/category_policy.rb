@@ -1,20 +1,31 @@
 class CategoryPolicy < ApplicationPolicy
-    class Scope
-        def initialize(user, scope)
-          @user  = user
-          @scope = scope
-        end
+  attr_reader :user, :record
 
-        def resolve
-          if user && user.admin
-            scope.all
-          else
-            scope.where(active: true)
-          end
-        end
+  def initialize(user, record)
+    @user = user
+    @record = record
+  end
 
-        private
+  def create?
+    @user.admin
+  end
 
-        attr_reader :user, :scope
+  class Scope
+    def initialize(user, scope)
+      @user  = user
+      @scope = scope
+    end
+
+    def resolve
+      if user && user.admin
+        scope.all
+      else
+        scope.where(active: true)
       end
+    end
+
+    private
+
+    attr_reader :user, :scope
+  end
 end
