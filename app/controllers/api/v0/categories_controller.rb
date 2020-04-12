@@ -2,7 +2,8 @@ module Api
     module V0
         class CategoriesController < ApplicationController
 
-            before_action :authenticate_user!, only: [:create]
+            before_action :authenticate_user!, only: [:create, :show]
+            before_action :find_category, except: [:index, :create]
 
             def index
                 @categories = policy_scope(Category)
@@ -20,6 +21,17 @@ module Api
                 end
             end
 
+            def show
+              authorize @category
+            end
+
+            def update
+              if !@category.update(category_params)
+                render json: @category.errors,
+                      status: :unprocessable_entity
+              end
+            end
+
             private
             def category_params
                 params.require(:category).permit(
@@ -27,6 +39,10 @@ module Api
                     :percentage,
                     :active
                 )
+            end
+
+            def find_category
+              @category = Category.find(params[:id])
             end
         end
     end
