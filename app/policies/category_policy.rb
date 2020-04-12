@@ -10,6 +10,15 @@ class CategoryPolicy < ApplicationPolicy
     @user.admin
   end
 
+  def show?
+    @user.admin
+  end
+
+  def update?
+    @user.admin
+  end
+
+
   class Scope
     def initialize(user, scope)
       @user  = user
