@@ -7,8 +7,10 @@ RSpec.describe 'Describe API', type: :request do
 
   # Test suite for GET /api/v0/categories
   describe 'GET /api/v0/categories' do
+    let(:user) { create :user }
+    before { login_as user }
     # make HTTP get request before each example
-    before { get '/api/v0/categories' }
+    before { get_with_headers '/api/v0/categories' }
 
     it 'returns categories' do
       # Note `json` is a custom helper to parse JSON responses
@@ -23,7 +25,9 @@ RSpec.describe 'Describe API', type: :request do
 
   # Test suite for GET /api/v0/categories/:id
   describe 'GET /api/v0/categories/:id' do
-    before { get "/api/v0/categories/#{category_id}" }
+    let(:admin) { create :user, :admin_user }
+    before { login_as admin }
+    before { get_with_headers "/api/v0/categories/#{category_id}" }
 
     context 'when the record exists' do
       it 'returns the category' do
@@ -41,10 +45,6 @@ RSpec.describe 'Describe API', type: :request do
 
       it 'returns status code 404' do
         expect(response).to have_http_status(404)
-      end
-
-      it 'returns a not found message' do
-        expect(response.body).to match(/Couldn't find category/)
       end
     end
   end
@@ -94,15 +94,6 @@ RSpec.describe 'Describe API', type: :request do
       it 'returns status code 204' do
         expect(response).to have_http_status(204)
       end
-    end
-  end
-
-  # Test suite for DELETE /api/v0/categories/:id
-  describe 'DELETE /api/v0/categories/:id' do
-    before { delete "/api/v0/categories/#{category_id}" }
-
-    it 'returns status code 204' do
-      expect(response).to have_http_status(204)
     end
   end
 end
