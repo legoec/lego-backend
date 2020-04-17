@@ -13,10 +13,9 @@ module Api
                 @category = Category.new(category_params)
                 authorize @category
                 if @category.save
-                  render :create, status: 201
+                  render :create, status: :created
                 else
-                  render json: @category.errors,
-                        status: :unprocessable_entity
+                  render 'errors/model_errors', status: :unprocessable_entity, locals: { errors: @category.errors }
                 end
             end
 
@@ -25,8 +24,7 @@ module Api
 
             def update
               if !@category.update(category_params)
-                render json: @category.errors,
-                      status: :unprocessable_entity
+                render 'errors/model_errors', status: :unprocessable_entity, locals: { errors: @category.errors }
               end
             end
 

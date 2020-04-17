@@ -79,7 +79,7 @@ RSpec.describe 'Describe API', type: :request do
 
       it 'returns a validation failure message' do
         expect(response.body)
-          .to match("{\"percentage\":[\"can't be blank\"]}")
+          .to match("{\"errors\":{\"percentage\":[\"can't be blank\"]}}")
       end
     end
   end
@@ -87,6 +87,7 @@ RSpec.describe 'Describe API', type: :request do
   # Test suite for PUT /api/v0/categories/:id
   describe 'PUT /api/v0/categories/:id' do
     let(:valid_attributes) { { category: { name: 'Shopping' }} }
+    let(:invalid_attributes) { { category: { name: '' } } }
     let(:admin) { create :user, :admin_user }
     before { login_as admin }
 
@@ -99,6 +100,20 @@ RSpec.describe 'Describe API', type: :request do
 
       it 'returns status code 204' do
         expect(response).to have_http_status(204)
+      end
+    end
+
+    context 'when the request is invalid' do
+      before { login_as admin }
+      before { put_with_headers "/api/v0/categories/#{category_id}", invalid_attributes }
+
+      it 'returns status code 422' do
+        expect(response).to have_http_status(422)
+      end
+
+      it 'returns a validation failure message' do
+        expect(response.body)
+          .to match("{\"errors\":{\"name\":[\"can't be blank\"]}}")
       end
     end
   end
