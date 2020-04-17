@@ -2,7 +2,7 @@ module Api
     module V0
         class CategoriesController < ApplicationController
 
-            before_action :authenticate_user!, only: [:create, :show]
+            before_action :authenticate_user!, only: [:create, :show, :update]
             before_action :find_category, except: [:index, :create]
 
             def index
@@ -10,25 +10,21 @@ module Api
             end
 
             def create
-                category = Category.new(category_params)
-                authorize category
-                if category.save
-                  render json: { category: category },
-                        status: :created
+                @category = Category.new(category_params)
+                authorize @category
+                if @category.save
+                  render :create, status: :created
                 else
-                  render json: category.errors,
-                        status: :unprocessable_entity
+                  render 'errors/model_errors', status: :unprocessable_entity, locals: { errors: @category.errors }
                 end
             end
 
             def show
-              authorize @category
             end
 
             def update
               if !@category.update(category_params)
-                render json: @category.errors,
-                      status: :unprocessable_entity
+                render 'errors/model_errors', status: :unprocessable_entity, locals: { errors: @category.errors }
               end
             end
 
@@ -43,6 +39,7 @@ module Api
 
             def find_category
               @category = Category.find(params[:id])
+              authorize @category
             end
         end
     end

@@ -10,6 +10,9 @@
 #  updated_at :datetime         not null
 #
 class Category < ApplicationRecord
+  begin :validations
+    validates :name, :percentage, presence: true
+  end
   begin :relationships
     has_many :vendors
   end
