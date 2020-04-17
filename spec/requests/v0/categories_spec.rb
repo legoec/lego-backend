@@ -52,13 +52,16 @@ RSpec.describe 'Describe API', type: :request do
   # Test suite for POST /api/v0/categories
   describe 'POST /api/v0/categories' do
     # valid payload
-    let(:valid_attributes) { { title: 'Learn Elm', created_by: '1' } }
+    let(:admin) { create :user, :admin_user }
+    let(:valid_attributes) { { category: { name: 'Learn Elm', percentage: 10, active: true } } }
+    let(:invalid_attributes) { { category: { name: 'Learn Elm' } } }
 
     context 'when the request is valid' do
-      before { post '/api/v0/categories', params: valid_attributes }
+      before { login_as admin }
+      before { post_with_headers '/api/v0/categories', valid_attributes }
 
       it 'creates a category' do
-        expect(json['title']).to eq('Learn Elm')
+        expect(json['name']).to eq('Learn Elm')
       end
 
       it 'returns status code 201' do
@@ -67,7 +70,8 @@ RSpec.describe 'Describe API', type: :request do
     end
 
     context 'when the request is invalid' do
-      before { post '/api/v0/categories', params: { title: 'Foobar' } }
+      before { login_as admin }
+      before { post_with_headers '/api/v0/categories', invalid_attributes }
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
@@ -75,17 +79,19 @@ RSpec.describe 'Describe API', type: :request do
 
       it 'returns a validation failure message' do
         expect(response.body)
-          .to match(/Validation failed: Created by can't be blank/)
+          .to match("{\"percentage\":[\"can't be blank\"]}")
       end
     end
   end
 
   # Test suite for PUT /api/v0/categories/:id
   describe 'PUT /api/v0/categories/:id' do
-    let(:valid_attributes) { { title: 'Shopping' } }
+    let(:valid_attributes) { { category: { name: 'Shopping' }} }
+    let(:admin) { create :user, :admin_user }
+    before { login_as admin }
 
     context 'when the record exists' do
-      before { put "/api/v0/categories/#{category_id}", params: valid_attributes }
+      before { put_with_headers "/api/v0/categories/#{category_id}", valid_attributes }
 
       it 'updates the record' do
         expect(response.body).to be_empty

@@ -10,7 +10,7 @@ module RequestLoginMacros
   end
 
   def post_with_headers(path, parameters = {})
-    post(path, parameters, headers: response_headers)
+    post(path, params: parameters, headers: response_headers)
   end
 
   def get_with_headers(path)
@@ -18,7 +18,7 @@ module RequestLoginMacros
   end
 
   def put_with_headers(path, parameters = {})
-    put(path, parameters, headers: response_headers)
+    put(path, params: parameters, headers: response_headers)
   end
 
   private
