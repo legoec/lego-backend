@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_04_194544) do
+ActiveRecord::Schema.define(version: 2020_04_19_215401) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,6 +98,15 @@ ActiveRecord::Schema.define(version: 2020_04_04_194544) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  create_table "vendor_requests", force: :cascade do |t|
+    t.string "status"
+    t.text "feedback"
+    t.bigint "vendor_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["vendor_id"], name: "index_vendor_requests_on_vendor_id"
+  end
+
   create_table "vendors", force: :cascade do |t|
     t.string "ruc"
     t.string "economic_activity"
@@ -122,6 +131,7 @@ ActiveRecord::Schema.define(version: 2020_04_04_194544) do
   add_foreign_key "experiences", "vendors"
   add_foreign_key "recomendations", "vendors"
   add_foreign_key "services", "vendors"
+  add_foreign_key "vendor_requests", "vendors"
   add_foreign_key "vendors", "categories"
   add_foreign_key "vendors", "users"
 end
