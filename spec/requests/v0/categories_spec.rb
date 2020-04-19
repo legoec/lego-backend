@@ -79,7 +79,7 @@ RSpec.describe 'Describe API', type: :request do
 
       it 'returns a validation failure message' do
         expect(response.body)
-          .to match("{\"errors\":{\"percentage\":[\"can't be blank\"]}}")
+          .to match("{\"errors\":{\"percentage\":[\"no puede estar en blanco\"]}}")
       end
     end
   end
@@ -113,7 +113,7 @@ RSpec.describe 'Describe API', type: :request do
 
       it 'returns a validation failure message' do
         expect(response.body)
-          .to match("{\"errors\":{\"name\":[\"can't be blank\"]}}")
+          .to match("{\"errors\":{\"name\":[\"no puede estar en blanco\"]}}")
       end
     end
   end
