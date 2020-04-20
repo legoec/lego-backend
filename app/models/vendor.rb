@@ -24,5 +24,6 @@ class Vendor < ApplicationRecord
     belongs_to :category
     has_many :experiences
     has_many :recomendations
+    has_many :vendor_requests
   end
 end
