@@ -3,7 +3,7 @@
 # Table name: vendor_requests
 #
 #  id         :bigint           not null, primary key
-#  status     :string
+#  status     :string           not null
 #  feedback   :text
 #  vendor_id  :bigint           not null
 #  created_at :datetime         not null
@@ -12,5 +12,6 @@
 require 'rails_helper'
 
 RSpec.describe VendorRequest, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should_not allow_value(nil).for(:status) }
+  it { should_not allow_value(nil).for(:vendor_id) }
 end
