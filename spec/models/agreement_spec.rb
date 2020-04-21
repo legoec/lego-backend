@@ -15,5 +15,8 @@
 require 'rails_helper'
 
 RSpec.describe Agreement, type: :model do
-  # pending "add some examples to (or delete) #{__FILE__}"
+  it { should_not allow_value(nil).for(:name) }
+  it { should_not allow_value(nil).for(:duration) }
+  it { should_not allow_value(nil).for(:cost) }
+  it { should_not allow_value(nil).for(:rating) }
 end

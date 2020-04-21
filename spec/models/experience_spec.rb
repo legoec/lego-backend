@@ -14,5 +14,7 @@
 require 'rails_helper'
 
 RSpec.describe Experience, type: :model do
-  # pending "add some examples to (or delete) #{__FILE__}"
+  it { should_not allow_value(nil).for(:name) }
+  it { should_not allow_value(nil).for(:start_date) }
+  it { should_not allow_value(nil).for(:end_date) }
 end
