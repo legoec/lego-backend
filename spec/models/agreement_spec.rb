@@ -3,10 +3,10 @@
 # Table name: agreements
 #
 #  id         :bigint           not null, primary key
-#  name       :string
-#  duration   :integer
-#  cost       :float
-#  rating     :integer
+#  name       :string           not null
+#  duration   :integer          not null
+#  cost       :float            not null
+#  rating     :integer          not null
 #  user_id    :bigint           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -15,5 +15,8 @@
 require 'rails_helper'
 
 RSpec.describe Agreement, type: :model do
-  # pending "add some examples to (or delete) #{__FILE__}"
+  it { should_not allow_value(nil).for(:name) }
+  it { should_not allow_value(nil).for(:duration) }
+  it { should_not allow_value(nil).for(:cost) }
+  it { should_not allow_value(nil).for(:rating) }
 end

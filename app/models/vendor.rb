@@ -3,15 +3,15 @@
 # Table name: vendors
 #
 #  id                   :bigint           not null, primary key
-#  ruc                  :string
+#  ruc                  :string           not null
 #  economic_activity    :string
 #  contributor_type     :string
-#  legal_representative :string
-#  business_name        :string
+#  legal_representative :string           not null
+#  business_name        :string           not null
 #  image                :string
 #  logo                 :string
 #  slogan               :string
-#  mobile               :string
+#  mobile               :string           not null
 #  active               :boolean          default(FALSE)
 #  user_id              :bigint           not null
 #  created_at           :datetime         not null
@@ -25,5 +25,10 @@ class Vendor < ApplicationRecord
     has_many :experiences
     has_many :recomendations
     has_many :vendor_requests
+  end
+
+  begin :validations
+    validates :ruc, presence: true, uniqueness: true
+    validates :business_name, :legal_representative, :category_id, :user_id, :mobile, presence: true
   end
 end
