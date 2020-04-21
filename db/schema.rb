@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_20_170023) do
+ActiveRecord::Schema.define(version: 2020_04_21_163752) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "agreements", force: :cascade do |t|
-    t.string "name"
-    t.integer "duration"
-    t.float "cost"
-    t.integer "rating"
+    t.string "name", null: false
+    t.integer "duration", null: false
+    t.float "cost", null: false
+    t.integer "rating", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -37,10 +37,10 @@ ActiveRecord::Schema.define(version: 2020_04_20_170023) do
   end
 
   create_table "experiences", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.text "description"
-    t.datetime "start_date"
-    t.datetime "end_date"
+    t.datetime "start_date", null: false
+    t.datetime "end_date", null: false
     t.bigint "vendor_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -48,9 +48,9 @@ ActiveRecord::Schema.define(version: 2020_04_20_170023) do
   end
 
   create_table "recomendations", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.text "description"
-    t.string "contact"
+    t.string "contact", null: false
     t.bigint "vendor_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -58,8 +58,8 @@ ActiveRecord::Schema.define(version: 2020_04_20_170023) do
   end
 
   create_table "services", force: :cascade do |t|
-    t.string "name"
-    t.float "price"
+    t.string "name", null: false
+    t.float "price", null: false
     t.integer "amount"
     t.bigint "vendor_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -108,15 +108,15 @@ ActiveRecord::Schema.define(version: 2020_04_20_170023) do
   end
 
   create_table "vendors", force: :cascade do |t|
-    t.string "ruc"
+    t.string "ruc", null: false
     t.string "economic_activity"
     t.string "contributor_type"
-    t.string "legal_representative"
-    t.string "business_name"
+    t.string "legal_representative", null: false
+    t.string "business_name", null: false
     t.string "image"
     t.string "logo"
     t.string "slogan"
-    t.string "mobile"
+    t.string "mobile", null: false
     t.boolean "active", default: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false

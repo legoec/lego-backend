@@ -3,10 +3,10 @@
 # Table name: agreements
 #
 #  id         :bigint           not null, primary key
-#  name       :string
-#  duration   :integer
-#  cost       :float
-#  rating     :integer
+#  name       :string           not null
+#  duration   :integer          not null
+#  cost       :float            not null
+#  rating     :integer          not null
 #  user_id    :bigint           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

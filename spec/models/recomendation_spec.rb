@@ -3,9 +3,9 @@
 # Table name: recomendations
 #
 #  id          :bigint           not null, primary key
-#  name        :string
+#  name        :string           not null
 #  description :text
-#  contact     :string
+#  contact     :string           not null
 #  vendor_id   :bigint           not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
