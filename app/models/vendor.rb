@@ -31,4 +31,8 @@ class Vendor < ApplicationRecord
     validates :ruc, presence: true, uniqueness: true
     validates :business_name, :legal_representative, :category_id, :user_id, :mobile, presence: true
   end
+
+  def status
+    VendorRequest.find_by_vendor_id(self.id).status
+  end
 end
