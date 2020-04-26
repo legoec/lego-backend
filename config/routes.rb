@@ -9,6 +9,7 @@ Rails.application.routes.draw do
         end
       end
       resources :categories, only: [:index, :create, :show, :update]
+      resources :vendors, only: [:create]
     end
   end
 end
