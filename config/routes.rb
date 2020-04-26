@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       end
       resources :categories, only: [:index, :create, :show, :update]
       resources :vendors, only: [:index, :create]
+      resources :vendor_requests, only: [:create]
     end
   end
 end
