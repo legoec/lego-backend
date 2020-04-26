@@ -46,6 +46,12 @@ vendor = Vendor.create(
     category: category
 )
 
+VendorRequest.create(
+    status: 'approved',
+    feedback: '',
+    vendor: vendor
+)
+
 Experience.create(
     name: 'Plomero',
     description: 'Plomero durante obra en casa familia Peluche',
