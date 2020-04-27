@@ -4,10 +4,6 @@ module Api
 
           before_action :authenticate_user!, only: [:create, :show, :update]
 
-          def index
-              @vendors = policy_scope(Vendor)
-          end
-
           def create
               @vendor = Vendor.new(vendor_params)
               @vendor.user = @current_user

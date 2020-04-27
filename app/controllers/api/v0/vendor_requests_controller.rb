@@ -3,8 +3,13 @@ module Api
     class VendorRequestsController < ApplicationController
       before_action :authenticate_user!, only: [:create]
 
+      def index
+        @vendor_requests = policy_scope(VendorRequest)
+      end
+
       def create
         @vendor_request = VendorRequest.new(vendor_request_params)
+        authorize @vendor_request
         if @vendor_request.save
           render :create, status: :created
         else

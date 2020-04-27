@@ -1,4 +1,4 @@
-class VendorPolicy < ApplicationPolicy
+class VendorRequestPolicy < ApplicationPolicy
   attr_reader :user, :record
 
   def initialize(user, record)
@@ -10,15 +10,6 @@ class VendorPolicy < ApplicationPolicy
     @user.admin
   end
 
-  def show?
-    @user.admin
-  end
-
-  def update?
-    @user.admin
-  end
-
-
   class Scope
     def initialize(user, scope)
       @user  = user
@@ -27,9 +18,9 @@ class VendorPolicy < ApplicationPolicy
 
     def resolve
       if user && user.admin
-        scope.all
+        scope.all.group_by(&:vendor_id).map{|s| s.last.last}
       else
-        scope.joins(:vendor_requests).where(vendor_requests: {status: "approved"})
+        []
       end
     end
 
