@@ -25,7 +25,7 @@ module Api
 
           private
           def vendor_params
-              params.require(:vendor).permit(
+              params.permit(
                 :ruc,
                 :economic_activity,
                 :contributor_type,

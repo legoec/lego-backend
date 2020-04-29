@@ -45,10 +45,15 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise_token_auth'
 gem 'rack-cors'
 gem 'pundit'
+gem 'carrierwave', '~> 2.0'
 
 group :test do
   gem 'factory_bot_rails', '~> 4.0'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'faker'
   gem 'database_cleaner'
+end
+
+group :production do
+  gem 'cloudinary'
 end

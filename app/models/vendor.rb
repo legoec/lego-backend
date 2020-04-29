@@ -19,6 +19,9 @@
 #  category_id          :bigint
 #
 class Vendor < ApplicationRecord
+  mount_uploader :image, ApplicationUploader
+  mount_uploader :logo, ApplicationUploader
+
   begin :relationships
     belongs_to :user
     belongs_to :category
