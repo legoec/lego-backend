@@ -23,6 +23,25 @@ module Api
               end
           end
 
+          def update
+            @vendor = Vendor.find(params[:id])
+            @vendor.user = @current_user
+            if @vendor.update(vendor_params)
+              @vendor_request = VendorRequest.new(
+                status: 'pending',
+                feedback: '',
+                vendor: @vendor
+              )
+              if @vendor_request.save
+                render :create, status: :ok
+              else
+                render 'errors/model_errors', status: :unprocessable_entity, locals: { errors: @vendor_request.errors }
+              end
+            else
+              render 'errors/model_errors', status: :unprocessable_entity, locals: { errors: @vendor.errors }
+            end
+        end
+
           private
           def vendor_params
               params.permit(
