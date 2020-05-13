@@ -1,1 +1,1 @@
-json.extract! @service, :id, :name, :price, :amount
+json.partial! 'service_without_vendor', service: @service
