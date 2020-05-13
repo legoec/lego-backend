@@ -2,9 +2,13 @@ module Api
   module V0
     class ServicesController < ApplicationController
       before_action :authenticate_user!, only: [:create]
+      before_action :find_service, except: [:index, :create]
 
       def index
         @services = Service.includes(:vendor).where(vendors: {category_id: params[:id]})
+      end
+
+      def show
       end
 
       def create
@@ -24,6 +28,10 @@ module Api
           :amount,
           :vendor_id
         )
+      end
+
+      def find_service
+        @service = Service.find(params[:id])
       end
     end
   end

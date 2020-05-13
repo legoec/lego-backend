@@ -15,7 +15,7 @@ Rails.application.routes.draw do
       end
       resources :vendors, only: [:create, :update]
       resources :vendor_requests, only: [:index, :create]
-      resources :services, only: [:create]
+      resources :services, only: [:create, :show]
       resources :vendor, only: [:index, :create, :show, :update] do
         member do
           resources :services, only: [:index], :controller => "vendor_services"
