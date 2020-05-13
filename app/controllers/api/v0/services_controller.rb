@@ -11,6 +11,12 @@ module Api
       def show
       end
 
+      def update
+        if !@service.update(service_params)
+          render 'errors/model_errors', status: :unprocessable_entity, locals: { errors: @category.errors }
+        end
+      end
+
       def create
         @service = Service.new(service_params)
         if @service.save
