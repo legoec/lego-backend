@@ -8,7 +8,11 @@ Rails.application.routes.draw do
           get :vendor
         end
       end
-      resources :categories, only: [:index, :create, :show, :update]
+      resources :categories, only: [:index, :create, :show, :update] do
+        member do
+          resources :services, only: [:index]
+        end
+      end
       resources :vendors, only: [:create, :update]
       resources :vendor_requests, only: [:index, :create]
     end
