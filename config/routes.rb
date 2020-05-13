@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       end
       resources :vendors, only: [:create, :update]
       resources :vendor_requests, only: [:index, :create]
+      resources :services, only: [:create]
     end
   end
 end
