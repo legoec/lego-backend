@@ -1,1 +1,1 @@
-json.extract! service, :id, :name, :vendor
+json.extract! service, :id, :name, :price, :vendor

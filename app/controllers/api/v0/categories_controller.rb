@@ -2,7 +2,7 @@ module Api
     module V0
         class CategoriesController < ApplicationController
 
-            before_action :authenticate_user!, only: [:create, :show, :update]
+            before_action :authenticate_user!, only: [:create, :update]
             before_action :find_category, except: [:index, :create]
 
             def index
