@@ -1,1 +1,1 @@
-json.partial! 'service_without_vendor', service: @service
+json.partial! 'service', service: @service
