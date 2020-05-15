@@ -5,7 +5,10 @@ module Api
       before_action :find_service, except: [:index, :create]
 
       def index
-        @services = Service.includes(:vendor).where(vendors: {category_id: params[:id]})
+        query = params[:query]
+        @services = Service.includes(:vendor)
+                           .where(vendors: {category_id: params[:id]})
+                           .where("unaccent(services.name) ILIKE :q OR unaccent(vendors.business_name) ILIKE :q", q: "%#{query}%")
       end
 
       def show
