@@ -4,11 +4,17 @@ module Api
       before_action :authenticate_user!, only: [:create]
       before_action :find_service, except: [:index, :create]
 
+      PAGE = 1
+      PER_PAGE = 10
+
       def index
         query = params[:query]
         @services = Service.includes(:vendor)
                            .where(vendors: {category_id: params[:id]})
                            .where("unaccent(services.name) ILIKE :q OR unaccent(vendors.business_name) ILIKE :q", q: "%#{query}%")
+                           .page(params[:page] || PAGE)
+                           .per(params[:per_page] || PER_PAGE)
+        @total_count = @services.total_count
       end
 
       def show

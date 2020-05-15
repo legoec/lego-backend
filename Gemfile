@@ -46,6 +46,7 @@ gem 'devise_token_auth'
 gem 'rack-cors'
 gem 'pundit'
 gem 'carrierwave', '~> 2.0'
+gem 'kaminari'
 
 group :test do
   gem 'factory_bot_rails', '~> 4.0'
