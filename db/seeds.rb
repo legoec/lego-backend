@@ -52,13 +52,15 @@ VendorRequest.create(
     vendor: vendor
 )
 
-Recomendation.create(
-    description: 'Realizó un excelente trabajo'
-)
-
 service = Service.create(
     name: 'Cambio de tuberías cocina',
     price: 40.00,
     amount: 1,
     vendor: vendor
+)
+
+Recomendation.create(
+  description: 'Realizó un excelente trabajo',
+  user: user,
+  service: service
 )
