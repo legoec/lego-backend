@@ -62,5 +62,6 @@ service = Service.create(
 Recomendation.create(
   description: 'Realizó un excelente trabajo',
   user: user,
-  service: service
+  service: service,
+  ranking: 2
 )
