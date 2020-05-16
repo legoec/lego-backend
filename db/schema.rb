@@ -10,24 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_14_191259) do
+ActiveRecord::Schema.define(version: 2020_05_16_004522) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "unaccent"
-
-  create_table "agreements", force: :cascade do |t|
-    t.string "name", null: false
-    t.integer "duration", null: false
-    t.float "cost", null: false
-    t.integer "rating", null: false
-    t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "service_id", null: false
-    t.index ["service_id"], name: "index_agreements_on_service_id"
-    t.index ["user_id"], name: "index_agreements_on_user_id"
-  end
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -35,17 +22,6 @@ ActiveRecord::Schema.define(version: 2020_05_14_191259) do
     t.boolean "active", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "experiences", force: :cascade do |t|
-    t.string "name", null: false
-    t.text "description"
-    t.datetime "start_date", null: false
-    t.datetime "end_date", null: false
-    t.bigint "vendor_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["vendor_id"], name: "index_experiences_on_vendor_id"
   end
 
   create_table "recomendations", force: :cascade do |t|
@@ -127,9 +103,6 @@ ActiveRecord::Schema.define(version: 2020_05_14_191259) do
     t.index ["user_id"], name: "index_vendors_on_user_id"
   end
 
-  add_foreign_key "agreements", "services"
-  add_foreign_key "agreements", "users"
-  add_foreign_key "experiences", "vendors"
   add_foreign_key "recomendations", "vendors"
   add_foreign_key "services", "vendors"
   add_foreign_key "vendor_requests", "vendors"

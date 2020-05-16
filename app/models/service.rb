@@ -13,7 +13,6 @@
 class Service < ApplicationRecord
   begin :relationships
     belongs_to :vendor
-    has_many :agreements
   end
 
   begin :validations

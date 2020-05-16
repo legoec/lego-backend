@@ -52,14 +52,6 @@ VendorRequest.create(
     vendor: vendor
 )
 
-Experience.create(
-    name: 'Plomero',
-    description: 'Plomero durante obra en casa familia Peluche',
-    start_date: Time.now - 90.days,
-    end_date: Time.now - 30.days,
-    vendor: vendor
-)
-
 Recomendation.create(
     name: 'Buen empleado',
     description: 'Realizó un excelente trabajo',
@@ -72,13 +64,4 @@ service = Service.create(
     price: 40.00,
     amount: 1,
     vendor: vendor
-)
-
-Agreement.create(
-    name: 'Cambio de tuberías',
-    duration: 1,
-    cost: 40.00,
-    rating: 4,
-    user: user,
-    service: service
 )

@@ -21,7 +21,6 @@
 require 'rails_helper'
 
 RSpec.describe Vendor, type: :model do
-  it { should have_many(:experiences) }
   it { should have_many(:recomendations) }
   it { should_not allow_value(nil).for(:ruc) }
   it { should_not allow_value(nil).for(:business_name) }

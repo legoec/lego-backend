@@ -13,7 +13,6 @@
 require 'rails_helper'
 
 RSpec.describe Service, type: :model do
-  it { should have_many(:agreements) }
   it { should_not allow_value(nil).for(:name) }
   it { should_not allow_value(nil).for(:price) }
 end
