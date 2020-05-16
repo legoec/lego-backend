@@ -53,10 +53,7 @@ VendorRequest.create(
 )
 
 Recomendation.create(
-    name: 'Buen empleado',
-    description: 'Realizó un excelente trabajo',
-    contact: '099333333',
-    vendor: vendor
+    description: 'Realizó un excelente trabajo'
 )
 
 service = Service.create(

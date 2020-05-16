@@ -12,10 +12,8 @@
 #
 class Recomendation < ApplicationRecord
   begin :relationships
-    belongs_to :vendor
   end
 
   begin :validations
-    validates :name, :contact, :vendor_id, presence: true
   end
 end
