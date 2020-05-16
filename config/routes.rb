@@ -13,6 +13,11 @@ Rails.application.routes.draw do
           resources :services, only: [:index]
         end
       end
+      resources :services do
+        member do
+          resources :recomendations, only: [:index]
+        end
+      end
       resources :vendors, only: [:create, :update]
       resources :vendor_requests, only: [:index, :create]
       resources :services, only: [:create, :show, :update]
@@ -21,6 +26,7 @@ Rails.application.routes.draw do
           resources :services, only: [:index], :controller => "vendor_services"
         end
       end
+      resources :recomendations, only: [:create]
     end
   end
 end
