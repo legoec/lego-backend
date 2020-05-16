@@ -52,21 +52,6 @@ VendorRequest.create(
     vendor: vendor
 )
 
-Experience.create(
-    name: 'Plomero',
-    description: 'Plomero durante obra en casa familia Peluche',
-    start_date: Time.now - 90.days,
-    end_date: Time.now - 30.days,
-    vendor: vendor
-)
-
-Recomendation.create(
-    name: 'Buen empleado',
-    description: 'Realizó un excelente trabajo',
-    contact: '099333333',
-    vendor: vendor
-)
-
 service = Service.create(
     name: 'Cambio de tuberías cocina',
     price: 40.00,
@@ -74,11 +59,8 @@ service = Service.create(
     vendor: vendor
 )
 
-Agreement.create(
-    name: 'Cambio de tuberías',
-    duration: 1,
-    cost: 40.00,
-    rating: 4,
-    user: user,
-    service: service
+Recomendation.create(
+  description: 'Realizó un excelente trabajo',
+  user: user,
+  service: service
 )

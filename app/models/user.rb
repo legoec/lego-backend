@@ -39,6 +39,5 @@ class User < ActiveRecord::Base
 
   begin :relationships
     has_one :vendor
-    has_many :agreements
   end
 end
