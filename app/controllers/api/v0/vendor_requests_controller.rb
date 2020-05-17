@@ -11,6 +11,9 @@ module Api
         @vendor_request = VendorRequest.new(vendor_request_params)
         authorize @vendor_request
         if @vendor_request.save
+          if(@vendor_request.status == 'approved')
+            VendorMailer.with(vendor: @vendor_request.vendor).vendor_accepted.deliver_later
+          end
           render :create, status: :created
         else
           render 'errors/model_errors', status: :unprocessable_entity, locals: { errors: @vendor_request.errors }
