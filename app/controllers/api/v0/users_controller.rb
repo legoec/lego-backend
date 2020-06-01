@@ -2,7 +2,7 @@ module Api
     module V0
         class UsersController < ApplicationController
           before_action :authenticate_user!, only: [:index, :vendor, :update]
-          before_action :find_user, only: [:update]
+          before_action :find_me, only: [:update]
 
           def index
               @users = User.all
@@ -33,8 +33,8 @@ module Api
             )
           end
 
-          def find_user
-            @user = User.find(params[:id])
+          def find_me
+            @user = @current_user
           end
         end
     end
