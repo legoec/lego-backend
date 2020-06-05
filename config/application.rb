@@ -45,7 +45,10 @@ module YellowappApi
       end
     end
 
-    Rails.application.config.hosts << "https://legoec-app.herokuapp.com"
+    Rails.application.config.hosts = [
+      "www.example.com",
+      "legoec-app.herokuapp.com"
+    ]
 
   end
 end
