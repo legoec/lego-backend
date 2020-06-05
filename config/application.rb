@@ -44,5 +44,8 @@ module YellowappApi
           methods: [:get, :post, :options, :delete, :put]
       end
     end
+
+    Rails.application.config.hosts << "https://legoec-app.herokuapp.com"
+
   end
 end
