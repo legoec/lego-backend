@@ -4,7 +4,7 @@
       models:
         category:
           one: Categoría
-          other: Categories
+          other: Categorías
         recomendation:
           one: Recomendación
           other: Recomendaciones
@@ -36,7 +36,7 @@
           updated_at: Actualizado en
         vendor_resquest:
           status: Estado
-          feedback: Retroalimentación
+          feedback: Comentario
           created_at: Creado en
           updated_at: Actualizado en
         vendor:
