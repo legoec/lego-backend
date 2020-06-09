@@ -12,8 +12,8 @@
           one: Servicio
           other: Servicios
         vendor_resquest:
-          one: Solicitud de Empresa
-          other: Solicitudes de Empresa
+          one: Solicitud de empresa
+          other: Solicitudes de empresa
         vendor:
           one: Empresa
           other: Empresas
@@ -44,7 +44,7 @@
           economic_activity: Actividad económica
           contributor_type: Tipo de contribuyente
           legal_representative: Representante legal
-          business_name: Nombre del establecimiento
+          business_name: Nombre de la empresa
           image: Imagen
           logo: Logotipo
           slogan: Eslogan
