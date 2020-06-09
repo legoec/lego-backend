@@ -1,6 +1,57 @@
 ---
   es:
     activerecord:
+      models:
+        category:
+          one: Categoría
+          other: Categorías
+        recomendation:
+          one: Recomendación
+          other: Recomendaciones
+        service:
+          one: Servicio
+          other: Servicios
+        vendor_resquest:
+          one: Solicitud de empresa
+          other: Solicitudes de empresa
+        vendor:
+          one: Empresa
+          other: Empresas
+      attributes:
+        category:
+          name: Nombre
+          percentage: Porcentaje
+          created_at: Creado en
+          updated_at: Actualizado en
+        recomendation:
+          description: Descripción
+          created_at: Creado en
+          updated_at: Actualizado en
+          ranking: Puntuación
+        service:
+          name: Nombre
+          price: Precio
+          amount: Cantidad
+          created_at: Creado en
+          updated_at: Actualizado en
+        vendor_resquest:
+          status: Estado
+          feedback: Comentario
+          created_at: Creado en
+          updated_at: Actualizado en
+        vendor:
+          ruc: RUC
+          economic_activity: Actividad económica
+          contributor_type: Tipo de contribuyente
+          legal_representative: Representante legal
+          business_name: Nombre de la empresa
+          image: Imagen
+          logo: Logotipo
+          slogan: Eslogan
+          mobile: Número celular
+          active: Activo
+          created_at: Creado en
+          updated_at: Actualizado en
       errors:
         messages:
           record_invalid: 'La validación falló: %{errors}'
