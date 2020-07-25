@@ -33,7 +33,8 @@ module Api
                 params.require(:category).permit(
                     :name,
                     :percentage,
-                    :active
+                    :active,
+                    :icon
                 )
             end
 

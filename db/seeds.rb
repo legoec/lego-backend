@@ -28,7 +28,8 @@ vendor_user = User.create(
 category = Category.create(
     name: 'Hogar',
     percentage: '3',
-    active: true
+    active: true,
+    icon: 'home-sharp'
 )
 
 vendor = Vendor.create(
@@ -64,4 +65,53 @@ Recomendation.create(
   user: user,
   service: service,
   ranking: 2
+)
+
+Category.create(
+    name: 'Oficina',
+    percentage: '3',
+    active: false,
+    icon: 'briefcase-sharp'
+)
+
+Category.create(
+    name: 'Transporte',
+    percentage: '3',
+    active: false,
+    icon: 'car-sharp'
+)
+
+Category.create(
+    name: 'Educación',
+    percentage: '3',
+    active: false,
+    icon: 'library-sharp'
+)
+
+Category.create(
+    name: 'Belleza',
+    percentage: '3',
+    active: false,
+    icon: 'happy-sharp'
+)
+
+Category.create(
+    name: 'Salud',
+    percentage: '3',
+    active: false,
+    icon: 'fitness-sharp'
+)
+
+Category.create(
+    name: 'Comida',
+    percentage: '3',
+    active: false,
+    icon: 'restaurant-sharp'
+)
+
+Category.create(
+    name: 'Reparación y Mantenimiento',
+    percentage: '3',
+    active: false,
+    icon: 'construct-sharp'
 )
