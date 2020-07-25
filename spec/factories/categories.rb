@@ -8,6 +8,7 @@
 #  active     :boolean          default(FALSE)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  icon       :string
 #
 FactoryBot.define do
   factory :category do

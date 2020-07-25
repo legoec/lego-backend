@@ -1,1 +1,1 @@
-json.extract! category, :id, :name, :active, :percentage
+json.extract! category, :id, :name, :active, :percentage, :icon
